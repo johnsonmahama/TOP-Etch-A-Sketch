@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch A Sketch</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <div><h1>Etch A Sketch</h1></div>
+    <div class="icons">
+        <span id="toggle-grid" class="material-symbols-outlined">grid_4x4</span>
+        <span id="toggle-gradient" class="material-symbols-outlined">gradient</span>
+        <span id="toggle-palette" class="material-symbols-outlined">palette</span>
+        <span id="toggle-eraser" class="material-symbols-outlined">ink_eraser</span>
+    </div>
+    <div id="container"></div>
+    <div id="slider-container">
+        <input id="slider" type="range" min="0" max="100" value="20">
+        <p id="resolution-text"></p>
+    </div>
+</body>
+</html>
