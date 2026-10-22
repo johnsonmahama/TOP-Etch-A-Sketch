@@ -21,17 +21,16 @@ function setCellColour() {
         let rgb = currentColor.match(/\d+/g).map(Number);
 
         // Darken each channel by 10% (or any step you like)
-        rgb = rgb.map(value => Math.max(value - 10, 0)); // subtract 25 each time, stop at 0
+        rgb = rgb.map(value => Math.max(value - 25, 0)); // subtract 25 each time, stop at 0
 
         stylusColor = `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
         this.style.backgroundColor = stylusColor;
     }
 
-    // else if (stylusActive === true) {stylusColor = "rgb(125,125,125)"}
-    else {stylusColor = "rgb(125,125,125)"}
+    // else if (stylusActive === true) {stylusColor = "rgb(185,185,185)"}
+    else {stylusColor = "rgb(185,185,185)"}
 
     this.style.backgroundColor = stylusColor
-
 } 
 
 let gridVisible = true
@@ -47,8 +46,7 @@ function createGridCells() {
         sketchArea.appendChild(cell)
 
         cell.addEventListener("click", setCellColour)
-        cell.addEventListener("dblclick",setCellColour)
-        cell.addEventListener("dragover",setCellColour)
+        cell.addEventListener("dragenter",setCellColour)
     }
 }
 createGridCells()
@@ -86,18 +84,36 @@ const toggleEraser = document.querySelector("#toggle-eraser")
 toggleEraser.onclick = function () {
     eraserActive = eraserActive ? false : true;
     this.style.backgroundColor = eraserActive ? "lightblue" : "";
+
+    paletteActive = false;
+    togglePalette.style.backgroundColor = "";
+
+    gradientActive = false;
+    toggleGradient.style.backgroundColor = "";
 }
 
 const togglePalette = document.querySelector("#toggle-palette")
 togglePalette.onclick = function () {
     paletteActive = paletteActive ? false : true;
     this.style.backgroundColor = paletteActive ? "lightblue" : "";
+
+    eraserActive = false;
+    toggleEraser.style.backgroundColor = "";
+
+    gradientActive = false;
+    toggleGradient.style.backgroundColor = "";
 }
 
 const toggleGradient = document.querySelector("#toggle-gradient")
 toggleGradient.onclick = function () {
     gradientActive = gradientActive ? false : true;
     this.style.backgroundColor = gradientActive ? "lightblue" : "";
+
+    paletteActive = false;
+    togglePalette.style.backgroundColor = "";
+
+    eraserActive = false;
+    toggleEraser.style.backgroundColor = "";
 }
 
 const toggleStylus = document.querySelector("#toggle-stylus")
