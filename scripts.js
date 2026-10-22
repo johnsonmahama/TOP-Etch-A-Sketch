@@ -13,21 +13,22 @@ stylusActive = true
 function setCellColour() {
 
     if (eraserActive === true) {stylusColor = "rgb(255,255,255)"}
-     else if (gradientActive === true) {
+    else if (paletteActive === true) {stylusColor = `rgb(${Math.floor(Math.random() * 256)},
+     ${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`}    
+    else if (gradientActive === true) {
         // Get current background color
         let currentColor = this.style.backgroundColor || "rgb(255,255,255)"; // default white
         let rgb = currentColor.match(/\d+/g).map(Number);
 
         // Darken each channel by 10% (or any step you like)
-        rgb = rgb.map(value => Math.max(value - 25, 0)); // subtract 25 each time, stop at 0
+        rgb = rgb.map(value => Math.max(value - 10, 0)); // subtract 25 each time, stop at 0
 
         stylusColor = `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
         this.style.backgroundColor = stylusColor;
     }
-    else if (paletteActive === true) {stylusColor = `rgb(${Math.floor(Math.random() * 256)},
-     ${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`}
 
-    else if (stylusActive === true) {stylusColor = "rgb(125,125,125)"}
+    // else if (stylusActive === true) {stylusColor = "rgb(125,125,125)"}
+    else {stylusColor = "rgb(125,125,125)"}
 
     this.style.backgroundColor = stylusColor
 
